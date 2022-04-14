@@ -1,5 +1,8 @@
 <article class="product">
- <a href="#" class="sold-out badge badge-danger">SOLD OUT !</a>
+    <%if product.quantity <= 0%>
+    <a href="#" class="sold-out badge badge-danger">SOLD OUT !</a>
+      <% end %>
+ 
   <header>
       
     <%= link_to product do %>
@@ -22,4 +25,5 @@
   <aside class="price">
     <%= humanized_money_with_symbol product.price %>
   </aside>
+ 
 </article>
