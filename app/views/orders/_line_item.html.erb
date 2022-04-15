@@ -1,0 +1,10 @@
+<article class="product">
+  <img class="card-img-top" src="..." alt="<%item.product.name%>">
+   <%= image_tag item.product.image.tiny %>
+    <h5 class="card-title"><%= item.product.name %></h5>
+    <p class="card-text"><%= item.product.description %></p>
+     <ul class="list-group list-group-flush " >
+    <li class="list-group-item">Quantity :  <%= item.quantity %></li>
+    <li class="list-group-item">Price: <%= humanized_money_with_symbol item.product.price%></li>
+    <li class="list-group-item">Item's total :  <%= humanized_money_with_symbol item.product.price * item.quantity %></li>
+  </ul>
