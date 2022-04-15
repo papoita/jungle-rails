@@ -4,10 +4,22 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
 
+
+  <div class="card text-white bg-success mb-3" style="text-align: center; padding 20px; margin 10px 15px">
+  
+  <div class="card-body">
+  <% @order.line_items.each do |item| %>
+ 
+     <%= render "line_item", item:item  %>
+    <% end %> 
+  </div>
+</div>
+
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+
 
 </section>
