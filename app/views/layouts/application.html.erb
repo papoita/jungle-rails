@@ -18,12 +18,7 @@
       <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
     <% end %>
 
-  <%  def active_sale?
-  true
-    # Sale.where("sales.starts_on <= ? AND sales.end_on >= ?", Date.current, Date.current).any?
-    
-  end
-  %>
+  
 
     <% if active_sale? %>
 
