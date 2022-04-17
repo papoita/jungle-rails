@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :about, only: [:index]
 
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
+
   resource :cart, only: [:show] do
     post   :add_item
     post   :remove_item
