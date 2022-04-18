@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # def sales
+    
+  #   Sale.active.any?
+  # end
+  # helper_method :sales
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
