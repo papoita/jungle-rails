@@ -7,8 +7,8 @@ RSpec.describe User, type: :model do
         first_name: "Papo",
         last_name: "Perez",
         email: "papo@hotmail.com",
-        password: "1",
-        password_confirmation: "1"
+        password: "abcdefg",
+        password_confirmation: "abcdefg"
       })
       expect(@user).to be_valid
     end
@@ -18,8 +18,8 @@ RSpec.describe User, type: :model do
         first_name: nil,
         last_name: "Perez",
         email: "papo@hotmail.com",
-        password: "1",
-        password_confirmation: "1"
+        password: "abcdefg",
+        password_confirmation: "abcdefg"
       })
       expect(@user).to be_invalid
       expect(@user.errors.full_messages).to include "Needs a firstname"
@@ -30,8 +30,8 @@ RSpec.describe User, type: :model do
         first_name: "Papo",
         last_name: nil,
         email: "papo@hotmail.com",
-        password: "1",
-        password_confirmation: "1"
+        password: "abcdefg",
+        password_confirmation: "abcdefg"
       })
       expect(@user).to be_invalid
       expect(@user.errors.full_messages).to include "needs a lastname"
@@ -42,8 +42,8 @@ RSpec.describe User, type: :model do
         first_name: "Papo",
         last_name: "Perez",
         email: nil,
-        password: "1",
-        password_confirmation: "1"
+        password: "abcdefg",
+        password_confirmation: "abcdefg"
       })
       expect(@user).to be_invalid
       expect(@user.errors.full_messages).to include "needs an email"
@@ -66,11 +66,23 @@ RSpec.describe User, type: :model do
         first_name: "papo",
         last_name: "perez",
         email: "papo@hotmail.com",
-        password: "1",
+        password: "abcdefg",
         password_confirmation: "2"
       })
       expect(@user).to be_invalid
       expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password"
+    end
+
+    it 'Not valid if password is less than 6 characters' do
+      @user = User.new({
+        first_name: "papo",
+        last_name: "perez",
+        email: "papo@hotmail.com",
+        password: "ab",
+        password_confirmation: "ab"
+      })
+      expect(@user).to be_invalid
+      expect(@user.errors.full_messages).to include "Password must have more than 6 characters"
     end
 
     describe 'emails must be unique' do
@@ -79,8 +91,8 @@ RSpec.describe User, type: :model do
           first_name: "Papo",
           last_name: "Perez",
           email: "papo@hotmail.com",
-          password: "1",
-          password_confirmation: "1"
+          password: "abcdefg",
+          password_confirmation: "abcdefg"
         })
       end 
 
