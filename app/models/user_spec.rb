@@ -107,6 +107,24 @@ RSpec.describe User, type: :model do
         expect(@user2).to_not be_valid
         expect(@user2.errors.full_messages).to include "Email is already in use"
       end
+
+      describe '.authenticate_with_credentials' do
+        before(:all) do
+          @user = User.create!({
+            name: "Sebas",
+            email: "sebas@hotmail.com",
+            password: "sebastian",
+            password_confirmation: "sebastian"
+          })
+        end
+        it 'should authenticate with the right credentails' do
+          email = "sebas@hotmail.com"
+          password = "sebastian"
+          @user2 = User.authenticate_with_credentials(email, password)
+    
+          expect(@user2).not_to be_nil
+        end
+        end
     end
   end
 end
