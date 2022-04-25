@@ -20,7 +20,7 @@ RSpec.describe Product, type: :model do
         quantity: 10
       })
       expect(@product).to be_invalid
-      expect(@product.errors.full_messages).to include "Product needs a name"
+      expect(@product.errors.full_messages).to include "Name can't be blank"
     end
 
     it 'Not valid without a price' do
@@ -31,7 +31,7 @@ RSpec.describe Product, type: :model do
         quantity: 10
       })
       expect(@product).to be_invalid
-      expect(@product.errors.full_messages).to include "Product needs a price"
+      expect(@product.errors.full_messages).to include "Price can't be blank"
     end
 
     it 'Not valid without a quantity' do
@@ -42,7 +42,7 @@ RSpec.describe Product, type: :model do
         quantity: nil
       })
       expect(@product).to be_invalid
-      expect(@product.errors.full_messages).to include "Product neeeds a quantity"
+      expect(@product.errors.full_messages).to include "Quantity can't be blank"
     end
 
     it 'Not valid without a category' do
@@ -53,7 +53,7 @@ RSpec.describe Product, type: :model do
         category: nil
       })
       expect(@product).to be_invalid
-      expect(@product.errors.full_messages).to include "Product needs a category"
+      expect(@product.errors.full_messages).to include "Category can't be blank"
     end
   end
 end
