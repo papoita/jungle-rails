@@ -117,6 +117,7 @@ RSpec.describe User, type: :model do
             password_confirmation: "sebastian"
           })
         end
+
         it 'should authenticate with the right credentails' do
           email = "sebas@hotmail.com"
           password = "sebastian"
@@ -124,6 +125,23 @@ RSpec.describe User, type: :model do
     
           expect(@user2).not_to be_nil
         end
+
+        it 'valid login if spaces before and/or after their email' do
+          email = " papo@hotmail.com    "
+          password = abcdefg
+          @user2 = User.authenticate_with_credentials(email, password)
+    
+          expect(@user2).not_to be_nil
+        end
+
+        it 'valid login if lower or uppercase email used' do
+          email = "PApo@hotMAIL.com"
+          password = abdcefg
+          @user2 = User.authenticate_with_credentials(email, password)
+    
+          expect(@user2).not_to be_nil
+        end
+
         end
     end
   end
